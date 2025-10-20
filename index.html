@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub数据可视化项目</title>
+    <!-- 使用更稳定的Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .chart-fallback {
+            background-color: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .chart-fallback p {
+            color: #6c757d;
+            margin: 0.5rem 0;
+        }
+        .error-message {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="errorContainer" style="display: none;"></div>
+    
+    <header>
+        <h1>GitHub数据可视化项目</h1>
+        <p class="subtitle">基于20组数据库数据的多维度可视化分析</p>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>数据概览</h2>
+            <p>本页面展示了从数据库中获取的20组数据，涵盖销售、用户行为、产品分类等多个维度。</p>
+            <p>如果图表未能正常显示，请检查浏览器控制台错误信息。</p>
+        </section>
+        
+        <section class="data-table-container">
+            <h2>原始数据表</h2>
+            <table class="data-table" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>产品类别</th>
+                        <th>销售额(万元)</th>
+                        <th>利润(万元)</th>
+                        <th>用户评分</th>
+                        <th>月份</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- 数据将通过JavaScript填充 -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="chart-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">月度销售额对比</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">利润趋势分析</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">产品类别分布</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">用户评分分布</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">销售额与利润关系</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">利润占比分析</h3>
+                <div class="chart-wrapper">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <p>加载图表中...</p>
+                    </div>
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
